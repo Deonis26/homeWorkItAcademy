@@ -1,1 +1,3 @@
-# homeWorkITAcademy
+# homeWorkItAcademy
+
+В данном репозитории были выполнены задания по курсу "Программирование на Java"
