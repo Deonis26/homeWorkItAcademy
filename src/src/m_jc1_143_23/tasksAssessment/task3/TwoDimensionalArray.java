@@ -18,8 +18,9 @@ public class TwoDimensionalArray {
             for (int j = 0; j < arr.length; j++) {
                 if (i == j || i==arr.length-1-j) { // определил диаганаль
                     arr[i][j] = 0;
-                }  else {
-                    arr[i][j] = (int) (Math.random() * 20);
+                }  else if(i<j && j< args.length-1-i) {
+                    System.out.println("1");
+                   // arr[i][j] = (int) (Math.random() * 20);
                 }
             }
         }
