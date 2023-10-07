@@ -13,14 +13,21 @@ public class TwoDimensionalArray {
         System.out.println("Введите размерность массива: ");
         int n = scanner.nextInt();
         int arr[][];
-                arr = new int[n][n];
+        arr = new int[n][n];
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
-                if (i == j || i==arr.length-1-j) { // определил диаганаль
+                if (i == j  || i==arr.length-1-j) {
                     arr[i][j] = 0;
-                }  else if(i<j && j< args.length-1-i) {
-                    System.out.println("1");
-                   // arr[i][j] = (int) (Math.random() * 20);
+                } else if (i < j && j < arr.length - 1-i) {
+                    arr[i][j] = 1;
+                } else if (j>i && i > arr.length - 1-j){
+                    arr[i][j]=3;
+                }
+                else if (i>j && j > arr.length - 1-i){
+                    arr[i][j]=5;
+                }
+                else {
+                    arr[i][j] =2;
                 }
             }
         }
@@ -31,5 +38,4 @@ public class TwoDimensionalArray {
             System.out.println();
         }
     }
-
 }
