@@ -8,10 +8,10 @@ public class ArrayRotation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите размерность массива: ");
-        int a = scanner.nextInt();
+        int arraySize = scanner.nextInt();
         int[] arr;
-        arr = new int[a];
-        // int temp = 0;
+
+        arr = new int[arraySize];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 20 - 5);
         }
@@ -20,11 +20,11 @@ public class ArrayRotation {
             System.out.print(element + " ");
         }
         System.out.println();
-        for (int i = 0; i < arr.length - 1 - i; i++) {
+        for (int i = 0; i < arr.length/2; i++) {
             int temp = arr[i];
-            arr[i] = arr[a - 1];
-            arr[a - 1] = temp;
-            a--;
+            arr[i] = arr[arraySize - 1];
+            arr[arraySize- 1] = temp;
+            arraySize--;
         }
 
         for (int element : arr) {
