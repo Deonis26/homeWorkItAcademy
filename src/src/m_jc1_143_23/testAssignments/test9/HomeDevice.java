@@ -54,14 +54,11 @@ public class HomeDevice {
                 '.';
     }
 
-    public void searchPower(int a, HomeDevice[] homeDevices){
-        if(a==getPower()){
-            System.out.println("Значание мощности равно= "+getPower());
-        } else {
-            System.out.println("Значение ");
+    public boolean searchPower(int a) {
+        if (a == getPower()) {
+            System.out.println(getName());
 
         }
-
+        return false;
     }
-
 }

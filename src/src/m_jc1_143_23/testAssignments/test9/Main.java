@@ -1,6 +1,7 @@
 package m_jc1_143_23.testAssignments.test9;
 
 import java.util.Arrays;
+import java.util.TreeSet;
 
 /*Определить иерархию домашней техники. Включить некоторые в розетку turnOn = true.
         Посчитать текущую потребляемую мощность.
@@ -47,9 +48,35 @@ public class Main {
             System.out.println(positions);
         }
         System.out.println();
-        homeDevices.searchPower();
-    }
 
+        System.out.println();
+        for (HomeDevice positions : homeDevices) {
+            if (positions.searchPower(200)) {
+                System.out.println(positions.getName());
+            }
+        }
+        System.out.println();
+        SortingElements sortingElements = new SortingElements();
+        TreeSet<HomeDevice> homeDevice = new TreeSet<>(sortingElements);
+        homeDevice.add(pc);
+        homeDevice.add(fridge);
+        homeDevice.add(machineWashing);
+        homeDevice.add(kettle);
+        homeDevice.add(electricStove);
+        homeDevice.add(hoodsKitchen);
+        homeDevice.add(tv);
+        homeDevice.add(lamp);
+        homeDevice.add(tapeRecording);
+        homeDevice.add(sewingMachine);
+        homeDevice.add(microwave);
+        int i=0;
+        System.out.println("Сортировка через Comparator");
+        for (HomeDevice p: homeDevices){
+            i++;
+            System.out.println(i+". "+p.getName()+" - "+p.getPower());
+        }
+
+    }
 }
 
 
