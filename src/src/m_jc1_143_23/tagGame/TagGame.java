@@ -41,11 +41,22 @@ public class TagGame {
             }
         }
         System.out.println();
+        int a;
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите номер пятнашнки от 1 до 15: ");
+
         while (!win) {
             System.out.println();
-            int a = scanner.nextInt();
+            for (; ; ) {
+                try {
+                    a = scanner.nextInt();
+                    break;
+                } catch (Exception e) {
+                    scanner.next();
+                    System.out.println("Не удалось распознать цифру. Повторите ввод");
+                }
+            }
             for (i = 0; i < tags.length; i++) {
                 for (j = 0; j < tags.length; j++) {
                     if (a == tags[i][j] && (i == tags0i || j == tags0j)) {
