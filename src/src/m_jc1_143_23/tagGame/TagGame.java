@@ -6,6 +6,12 @@ import java.util.Scanner;
 public class TagGame {
     public static void main(String[] args) {
         Integer[][] tags = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 0}};
+        String massive = "";
+        for (int i = 0; i < tags.length; i++) {
+            for (int j = 0; j < tags.length; j++) {
+                massive = massive + tags[i][j] + " ";
+            }
+        }
         Random random = new Random();
         int i;
         int j;
@@ -160,6 +166,17 @@ public class TagGame {
                     System.out.print(tags[k][l] + " ");
                 }
                 System.out.println();
+            }
+            String massive1 = "";
+            for (int k = 0; k < tags.length; k++) {
+                for (int l = 0; l < tags.length; l++) {
+                    massive1 = massive1 + tags[k][l] + " ";
+                }
+            }
+            if (massive.equals(massive1)) {
+                win = true;
+                System.out.println("Победа!! ");
+                break;
             }
             tags0i = temp5i;
             tags0j = temp5j;
