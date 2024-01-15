@@ -163,6 +163,8 @@ public class TagGame {
             }
             tags0i = temp5i;
             tags0j = temp5j;
+            System.out.println();
+            System.out.println("Ваш ход: ");
         }
     }
 }
