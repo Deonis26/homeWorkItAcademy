@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class TagGame {
     public static void main(String[] args) {
+        menu();
         Integer[][] tags = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 0}};
         String massive = "";
         for (int i = 0; i < tags.length; i++) {
@@ -44,7 +45,7 @@ public class TagGame {
         int a;
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите номер пятнашнки от 1 до 15: ");
+        System.out.print("Введите номер пятнашнки от 1 до 15: ");
 
         while (!win) {
             System.out.println();
@@ -192,8 +193,36 @@ public class TagGame {
             tags0i = temp5i;
             tags0j = temp5j;
             System.out.println();
-            System.out.println("Ваш ход: ");
+            System.out.print("Ваш ход: ");
+
+        }
+
+    }
+    public static void menu() {
+        System.out.println("new game (n)");
+        System.out.println("save game (s)");
+        System.out.println("load game (l)");
+        System.out.println("quit game (q)");
+        Scanner scanner = new Scanner(System.in);
+        String a = scanner.next();
+        System.out.println();
+        switch (a) {
+            case "n":
+                System.out.println("1");
+                break;
+            case "s":
+                System.out.println("2");
+                break;
+            case "l":
+                System.out.println("3");
+                break;
+            case "q":
+                System.out.println("4");
+                break;
+
         }
     }
 }
+
+
 
