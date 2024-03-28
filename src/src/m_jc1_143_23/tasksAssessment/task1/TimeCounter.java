@@ -22,61 +22,61 @@ public class TimeCounter {
         int dayCounter = (numberOfSecond / day) % 7; // счетчик дня
         int weekCounter = numberOfSecond / week; // счетчик недели
         if (hourCounter == 1 || hourCounter == 21) {
-            endingOfTheWordHour = " ";
+            endingOfTheWordHour = " час ";
         } else if (hourCounter == 2 || hourCounter == 3 || hourCounter == 4 || hourCounter == 22 || hourCounter == 23) {
-            endingOfTheWordHour = "a ";
+            endingOfTheWordHour = " часa ";
         } else {
-            endingOfTheWordHour = "ов ";
+            endingOfTheWordHour = " часов ";
         }
         switch (minuteCounter) {
             case 1, 21, 31, 41, 51:
-                endingOfTheWordMinute = "a ";
+                endingOfTheWordMinute = " минутa ";
                 break;
             case 2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54:
-                endingOfTheWordMinute = "ы ";
+                endingOfTheWordMinute = " минуты ";
                 break;
             default:
-                endingOfTheWordMinute = " ";
-                // break;
+                endingOfTheWordMinute = " минут ";
         }
         switch (secondCounter) {
             case 1, 21, 31, 41, 51:
-                endingOfTheWordSecond = "a ";
+                endingOfTheWordSecond = " секундa ";
                 break;
             case 2, 3, 4, 22, 23, 24, 32, 33, 34, 42, 43, 44, 52, 53, 54:
-                endingOfTheWordSecond = "ы ";
+                endingOfTheWordSecond = " секунды ";
                 break;
             default:
-                endingOfTheWordSecond = " ";
-                // break;
+                endingOfTheWordSecond = " секунд ";
         }
-        //String endingOfTheWordSecond = endingOfTheWordMinute;
-        String endingOfTheWordDay = dayCounter == 1 ? "ки " : "ок ";
-        String endingOfTheWordWeek = weekCounter == 1 ? "я " : "и ";
+        String endingOfTheWordDay = dayCounter == 1 ? " cутки " : " суток ";
+        String endingOfTheWordWeek = weekCounter == 1 ? " неделя " : " недели ";
         System.out.println("Количество секунд: " + numberOfSecond);
-        if (minuteCounter > 0 && numberOfSecond < hour && numberOfSecond % 60 != 0) {
-            System.out.println(minuteCounter + " минут" + endingOfTheWordMinute + secondCounter + " секунд" + endingOfTheWordSecond);
-        } else if (hourCounter > 0 && numberOfSecond < day && numberOfSecond % 60 != 0) {
-            System.out.println(hourCounter + " час" + endingOfTheWordHour + minuteCounter + " минут" + endingOfTheWordMinute +
-                    secondCounter + " секунд" + endingOfTheWordSecond);
-        } else if (dayCounter > 0 && numberOfSecond < week && numberOfSecond % 60 != 0) {
-            System.out.println(dayCounter + " сут" + hourCounter + " час" + minuteCounter + " минут" + secondCounter + " секунд");
-        } else if (weekCounter > 0 && numberOfSecond < week * 4 && numberOfSecond % 60 != 0) {
-            System.out.println(weekCounter + " недел" + endingOfTheWordWeek + dayCounter + " сут" + endingOfTheWordDay +
-                    hourCounter + " час" + endingOfTheWordHour + minuteCounter + " минут" + endingOfTheWordMinute + secondCounter + " секунд" + endingOfTheWordSecond);
-        } else if (numberOfSecond % 60 == 0 && numberOfSecond > 59 && numberOfSecond < hour) {
-            System.out.println(minuteCounter + " минут" + endingOfTheWordMinute);
-        } else if (numberOfSecond < minute) {
-            System.out.println(numberOfSecond + " секунд" + endingOfTheWordSecond);
-        } else if (numberOfSecond % hour == 0 && numberOfSecond < day) {
-            System.out.println(hourCounter + " час" + endingOfTheWordHour);
-        } else if (numberOfSecond % day == 0 && numberOfSecond < week) {
-            System.out.println(dayCounter + " сут" + endingOfTheWordDay);
-        } else if (numberOfSecond % week == 0 && numberOfSecond < week * 4 + 1) {
-            System.out.println(weekCounter + " недел" + endingOfTheWordWeek);
-        } else {
-            System.out.println("Выход за пределы месяца");
+        if (weekCounter > 0) { // больше недели
+            System.out.println(weekCounter + endingOfTheWordWeek + dayCounter  + endingOfTheWordDay +
+                    hourCounter + endingOfTheWordHour + minuteCounter + endingOfTheWordMinute +
+                    secondCounter +endingOfTheWordSecond);
+        } else if (dayCounter > 0) { //больше суток, но меньше недели
+            System.out.println(dayCounter +  endingOfTheWordDay + hourCounter + endingOfTheWordHour +
+                    minuteCounter + endingOfTheWordMinute + secondCounter + endingOfTheWordSecond);
+        } else if (hourCounter > 0) { //больше часа, но меньше суток
+            if (numberOfSecond % hour == 0) {
+                System.out.println(hourCounter + endingOfTheWordHour);
+            } else if (numberOfSecond % minute == 0) {
+                System.out.println(hourCounter + endingOfTheWordHour + minuteCounter + endingOfTheWordMinute);
+            } else if (minuteCounter == 0) {
+                System.out.println(hourCounter +  endingOfTheWordHour + secondCounter + endingOfTheWordSecond);
+            } else {
+                System.out.println(hourCounter +  endingOfTheWordHour + minuteCounter + endingOfTheWordMinute +
+                        secondCounter + endingOfTheWordSecond);
+            }
+        } else if (minuteCounter > 0) { // больше минуты, но меньше часа
+            if (numberOfSecond % minute == 0) {
+                System.out.println(minuteCounter+ endingOfTheWordMinute);
+            } else {
+                System.out.println(minuteCounter +endingOfTheWordMinute + secondCounter +endingOfTheWordSecond);
+            }
+        } else { // меньше минутки
+            System.out.println(secondCounter + endingOfTheWordSecond);
         }
     }
-
 }
