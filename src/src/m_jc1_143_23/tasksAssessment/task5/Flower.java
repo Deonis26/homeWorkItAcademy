@@ -12,4 +12,46 @@ public class Flower {
         this.prise = prise;
         this.timeWhenFlowerWithers = timeWhenFlowerWithers;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getPrise() {
+        return prise;
+    }
+
+    public void setPrise(int prise) {
+        this.prise = prise;
+    }
+
+    public int getTimeWhenFlowerWithers() {
+        return timeWhenFlowerWithers;
+    }
+
+    public void setTimeWhenFlowerWithers(int timeWhenFlowerWithers) {
+        this.timeWhenFlowerWithers = timeWhenFlowerWithers;
+    }
+
+    @Override
+    public String toString() {
+        return "Flower{" +
+                "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", prise=" + prise +
+                ", timeWhenFlowerWithers=" + timeWhenFlowerWithers +
+                '}';
+    }
 }

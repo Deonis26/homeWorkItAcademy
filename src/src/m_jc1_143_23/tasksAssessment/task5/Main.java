@@ -14,7 +14,5 @@ public class Main {
         Flower flower4 = new Flower("Ромашка", "белый с желтой серединой", 10, 50);
         Flower flower5 = new Flower("Лютик", "желтый", 300, 1500);
         Flower flower6 = new Flower("Сирень", "фиолетовый", 20, 3500);
-
-
     }
 }
