@@ -8,11 +8,13 @@ package m_jc1_143_23.tasksAssessment.task5;
 //В букет может входить несколько цветов одного типа.
 public class Main {
     public static void main(String[] args) {
-        Flower flower1 = new Flower("Тюльпан", "красный", 100, 2100);
-        Flower flower2 = new Flower("Роза", "белый", 400, 4500);
-        Flower flower3 = new Flower("Хризантема", "фиолетовый", 1000, 500);
-        Flower flower4 = new Flower("Ромашка", "белый с желтой серединой", 10, 50);
-        Flower flower5 = new Flower("Лютик", "желтый", 300, 1500);
-        Flower flower6 = new Flower("Сирень", "фиолетовый", 20, 3500);
+        Bouquet bouquet = new Bouquet();
+        bouquet.addFlower(new Rose("red", 15,5));
+        bouquet.addFlower(new Chamomile("white",4,7));
+        bouquet.addFlower(new Tulip("yellow", 3,1));
+        bouquet.addFlower(new Lulac("white", 44, 6));
+        System.out.println("Стоимость букета: "+bouquet.calculatePrice());
+        System.out.println("Цвета в букете: "+bouquet.getFlowerColors());
+        System.out.println("День, когда цветы завянут: "+bouquet.getDaysToWither());
     }
 }
