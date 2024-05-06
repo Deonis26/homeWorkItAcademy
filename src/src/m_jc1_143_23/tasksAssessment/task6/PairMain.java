@@ -6,19 +6,17 @@ package m_jc1_143_23.tasksAssessment.task6;
 //replaceFirst() - заменяет 1ый элемент на новый любого типа
 //replaceLast() - заменяет 2ой элемент на новый любого типа
 
-public class Main {
+public class PairMain {
     public static void main(String[] args) {
-        Pair<Integer, String> pair1 = new Pair<>(22, "ss");
-        pair1.swap();
+        Pair<String, Integer> pair = new Pair<>("S1", 11);
+        System.out.println(pair);
+        Pair<Integer, String> pair1 = pair.swap();
+        Integer first = pair1.first();
         System.out.println(pair1);
-        pair1.swap();
-        System.out.println(pair1);
-        pair1.replaceFirst(222);
-        System.out.println(pair1);
-        pair1.replaceLast("111111");
-        System.out.println(pair1);
-        System.out.println(pair1.first());
-        System.out.println(pair1.last());
-
+        System.out.println(pair.first());
+        System.out.println(pair.last());
+        pair.replaceFirst("String" );
+        System.out.println(pair);
     }
 }
+
