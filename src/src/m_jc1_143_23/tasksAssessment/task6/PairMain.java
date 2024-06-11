@@ -15,8 +15,10 @@ public class PairMain {
         System.out.println(pair1);
         System.out.println(pair.first());
         System.out.println(pair.last());
-        pair.replaceFirst("String" );
-        System.out.println(pair);
+        Pair pair3=pair.replaceFirst("String" );
+        System.out.println(pair3);
+
+
     }
 }
 
