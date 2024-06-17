@@ -16,6 +16,6 @@ public class MainStack {
         s1.push(144);
         s1.push(150);
         System.out.println(s1);
-        System.out.println(s1.min());
+        System.out.println(s1.max());
     }
 }
