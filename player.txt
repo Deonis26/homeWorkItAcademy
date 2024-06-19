@@ -1,0 +1,10 @@
+Player{name='Ivan', age=22, isActive=true}
+Player{name='Stepan', age=23, isActive=false}
+Player{name='Klar', age=25, isActive=true}
+Player{name='Ivan1', age=27, isActive=false}
+Player{name='Ivan2', age=30, isActive=true}
+Player{name='Ivan3', age=35, isActive=true}
+Player{name='Ivan4', age=37, isActive=true}
+Player{name='Ivan7', age=33, isActive=false}
+Player{name='Ivan8', age=27, isActive=true}
+Player{name='Ivan9', age=29, isActive=true}
