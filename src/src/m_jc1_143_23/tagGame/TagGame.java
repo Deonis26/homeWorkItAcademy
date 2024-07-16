@@ -50,10 +50,16 @@ public class TagGame {
             System.out.println();
             for (; ; ) {
                 try {
-                    cursor = scanner.nextInt();
-                    break;
+                    if (scanner.hasNextInt()) {
+                        cursor = scanner.nextInt();
+                        break;
+                    } else {
+                        scanner.next("s");
+                        saveGame();
+                    }
                 } catch (Exception e) {
                     scanner.next();
+                    //saveGame();
                     System.out.println("Не удалось распознать цифру. Повторите ввод");
                 }
             }
@@ -196,26 +202,27 @@ public class TagGame {
     public void saveGame() {
         File saveGame = new File("saveGame.txt");
         try {
-            if(saveGame.createNewFile()){
+            if (saveGame.createNewFile()) {
                 System.out.println("Файл успешно создан");
             } else {
                 System.out.println("Игра сохранена!");
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-        try (FileWriter fileWriter = new FileWriter("saveGame.txt")){
+        try (FileWriter fileWriter = new FileWriter("saveGame.txt")) {
             for (int i = 0; i < tagGame.length; i++) {
                 for (int t = 0; t < tagGame[i].length; t++) {
-                    fileWriter.append(String.valueOf(tagGame[i][t])+" ");
+                    fileWriter.append(String.valueOf(tagGame[i][t]) + " ");
                 }
                 fileWriter.write(" \n");
             }
-        } catch (IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    public void loadGame(){
+
+    public void loadGame() {
         System.out.println("нет реализации загрузки");
     }
 
