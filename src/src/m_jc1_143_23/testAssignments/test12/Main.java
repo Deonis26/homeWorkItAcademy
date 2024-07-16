@@ -21,7 +21,7 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
-        try (FileWriter writer = new FileWriter("random_numbers.txt");) {
+        try (FileWriter writer = new FileWriter("random_numbers.txt")) {
             for (int i = 0; i < 30; i++) {
                 writer.append(String.valueOf((byte) (Math.random() * 100 + 1)));
                 writer.write(" ");

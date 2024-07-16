@@ -1,5 +1,8 @@
 package m_jc1_143_23.tagGame;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -56,7 +59,7 @@ public class TagGame {
             }
             for (int i = 0; i < tagGame.length; i++) {
                 for (int j = 0; j < tagGame[i].length; j++) {
-                    if (cursor == tagGame[i][j] && (tags0i==i || tags0j==j)) {
+                    if (cursor == tagGame[i][j] && (tags0i == i || tags0j == j)) {
                         if (i + 1 == tags0i || j + 1 == tags0j || tags0i + 1 == i || tags0j + 1 == j || tags0i - 1 == i) {
                             int temp = tagGame[i][j];
                             tagGame[i][j] = tagGame[tags0i][tags0j];
@@ -86,7 +89,7 @@ public class TagGame {
                             tagGame[tags0i][tags0j] = temp1;
                         }
                         if (j > tags0j + 2) {
-                           temp5i = i;
+                            temp5i = i;
                             temp5j = j;
                             int temp = tagGame[i][j];
                             tagGame[i][j] = tagGame[tags0i][tags0j];
@@ -97,8 +100,8 @@ public class TagGame {
                             tagGame[tags0i][tags0j] = temp2;
                         }
                         if (j > tags0j && j <= tags0j + 2) {
-                           temp5i = i;
-                           temp5j = j;
+                            temp5i = i;
+                            temp5j = j;
                             int temp = tagGame[i][j];
                             int temp1 = tagGame[i][j - 1];
                             tagGame[i][j] = tagGame[tags0i][tags0j];
@@ -107,8 +110,8 @@ public class TagGame {
 
                         }
                         if (tags0j > j && tags0j < j + 3) {
-                          temp5i = i;
-                           temp5j = j;
+                            temp5i = i;
+                            temp5j = j;
                             int temp = tagGame[i][j];
                             int temp1 = tagGame[i][j + 1];
                             tagGame[i][j] = tagGame[tags0i][tags0j];
@@ -117,8 +120,8 @@ public class TagGame {
                             break;
                         }
                         if (tags0i > i && tags0i == i + 1) {
-                          temp5i = i;
-                           temp5j = j;
+                            temp5i = i;
+                            temp5j = j;
                             int temp = tagGame[i][j];//1
                             int temp1 = tagGame[i + 1][j];//9
                             tagGame[i][j] = tagGame[tags0i][tags0j];//[0]
@@ -128,7 +131,7 @@ public class TagGame {
 
                         }
                         if (tags0i > i && tags0i > i + 2) {
-                           temp5i = i;
+                            temp5i = i;
                             temp5j = j;
                             int temp = tagGame[i][j];
                             tagGame[i][j] = tagGame[tags0i][tags0j];
@@ -141,7 +144,7 @@ public class TagGame {
                             break;
                         }
                         if (tags0i > i && tags0i > i + 1) {
-                           temp5i = i;
+                            temp5i = i;
                             temp5j = j;
                             int temp = tagGame[i][j];
                             tagGame[i][j] = tagGame[tags0i][tags0j];
@@ -156,7 +159,7 @@ public class TagGame {
                             int temp1 = tagGame[i][j + 1];
                             int temp2 = tagGame[i][j + 2];
                             temp5i = i;
-                           temp5j = j;
+                            temp5j = j;
                             tagGame[i][j] = tagGame[tags0i][tags0j];
                             tagGame[i][j + 1] = temp;
                             tagGame[i][j + 2] = temp1;
@@ -177,7 +180,7 @@ public class TagGame {
                 }
                 System.out.println();
             }
-            winner= Arrays.deepEquals(massive, tagGame);
+            winner = Arrays.deepEquals(massive, tagGame);
             if (winner) {
                 System.out.println("Победа!! ");
                 break;
@@ -190,20 +193,46 @@ public class TagGame {
         }
     }
 
-        @Override
-        public String toString () {
-            StringBuilder massive = new StringBuilder();
-            for (Integer[] row : tagGame) {
-                for (Integer num : row) {
-                    if (num == 0) {
-                        massive.append("[ ]").append(" ");
-                    } else {
-                        massive.append(num).append(" ");
-
-                    }
-                }
-                massive.append("\n");
+    public void saveGame() {
+        File saveGame = new File("saveGame.txt");
+        try {
+            if(saveGame.createNewFile()){
+                System.out.println("Файл успешно создан");
+            } else {
+                System.out.println("Игра сохранена!");
             }
-            return massive.toString();
+        } catch (IOException e){
+            System.out.println(e.getMessage());
+        }
+        try (FileWriter fileWriter = new FileWriter("saveGame.txt")){
+            for (int i = 0; i < tagGame.length; i++) {
+                for (int t = 0; t < tagGame[i].length; t++) {
+                    fileWriter.append(String.valueOf(tagGame[i][t])+" ");
+                }
+                fileWriter.write(" \n");
+            }
+        } catch (IOException ex){
+            System.out.println(ex.getMessage());
         }
     }
+    public void loadGame(){
+        System.out.println("нет реализации загрузки");
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder massive = new StringBuilder();
+        for (Integer[] row : tagGame) {
+            for (Integer num : row) {
+                if (num == 0) {
+                    massive.append("[ ]").append(" ");
+                } else {
+                    massive.append(num).append(" ");
+
+                }
+            }
+            massive.append("\n");
+        }
+        return massive.toString();
+    }
+}

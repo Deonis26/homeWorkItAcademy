@@ -1,5 +1,8 @@
 package m_jc1_143_23.tagGame;
 
+import javax.imageio.IIOException;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -10,21 +13,22 @@ public class TagGameMain {
         System.out.println("load game (l)");
         System.out.println("quit game (q)");
         Scanner scanner = new Scanner(System.in);
-        String  menuSelection= scanner.next();
+        String menuSelection = scanner.next();
         System.out.println();
+        TagGame tag = new TagGame();
         switch (menuSelection) {
             case "n":
-                TagGame tag = new TagGame();
+                //TagGame tag = new TagGame();
                 System.out.println(tag);
                 tag.win();
                 break;
             case "s":
-                System.out.println("нет реализации");
+                tag.saveGame();
                 break;
             case "l":
-                System.out.println("нет реализации");
+                tag.loadGame();
                 break;
-            case "q":
+            case "q": //quit
                 break;
         }
 
