@@ -27,6 +27,8 @@ public class TagGameMain {
                 break;
             case "l":
                 tag.loadGame();
+                System.out.println(tag);
+                tag.win();
                 break;
             case "q": //quit
                 break;

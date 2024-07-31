@@ -1,6 +1,7 @@
 package m_jc1_143_23.tagGame;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -223,7 +224,21 @@ public class TagGame {
     }
 
     public void loadGame() {
-        System.out.println("нет реализации загрузки");
+        System.out.println("Игра успешно загружена! ");
+        try (Scanner scan = new Scanner(new FileReader("saveGame.txt"))) {
+
+            for (int i = 0; i < tagGame.length; i++) {
+                for (int j = 0; j < tagGame.length; j++) {
+                    tagGame[i][j] = scan.nextInt();
+            //        System.out.print(tagGame[i][j] + " ");
+                }
+            //    System.out.println();
+            }
+            String str = scan.nextLine();
+            System.out.println(str);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override
