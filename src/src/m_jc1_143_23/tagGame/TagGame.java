@@ -46,7 +46,6 @@ public class TagGame {
 
     public void win() {
         System.out.print("Введите номер пятнашнки от 1 до 15: ");
-
         while (!winner) {
             System.out.println();
             for (; ; ) {
@@ -55,17 +54,26 @@ public class TagGame {
                         cursor = scanner.nextInt();
                         break;
                     } else {
-                        scanner.next("s");
-                        saveGame();
+                        String input = scanner.next();
+                        switch (input) {
+                            case "s":
+                                saveGame();
+                                break;
+                            case "l":
+                                loadGame();
+                                break;
+                            case "q":
+                                quit();
+                                break;
+                        }
                     }
                 } catch (Exception e) {
                     scanner.next();
-                    //saveGame();
                     System.out.println("Не удалось распознать цифру. Повторите ввод");
                 }
             }
             for (int i = 0; i < tagGame.length; i++) {
-                for (int j = 0; j < tagGame[i].length; j++) {
+                for (int j = 0; j < tagGame.length; j++) {
                     if (cursor == tagGame[i][j] && (tags0i == i || tags0j == j)) {
                         if (i + 1 == tags0i || j + 1 == tags0j || tags0i + 1 == i || tags0j + 1 == j || tags0i - 1 == i) {
                             int temp = tagGame[i][j];
@@ -176,7 +184,6 @@ public class TagGame {
                     }
                 }
             }
-
             for (int k = 0; k < tagGame.length; k++) {
                 for (int l = 0; l < tagGame.length; l++) {
                     if (tagGame[k][l] == 0) {
@@ -214,9 +221,9 @@ public class TagGame {
         try (FileWriter fileWriter = new FileWriter("saveGame.txt")) {
             for (int i = 0; i < tagGame.length; i++) {
                 for (int t = 0; t < tagGame[i].length; t++) {
-                    fileWriter.append(String.valueOf(tagGame[i][t]) + " ");
+                    fileWriter.append((tagGame[i][t]) + " ");
                 }
-                fileWriter.write(" \n");
+                // fileWriter.write(" \n");
             }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
@@ -226,19 +233,21 @@ public class TagGame {
     public void loadGame() {
         System.out.println("Игра успешно загружена! ");
         try (Scanner scan = new Scanner(new FileReader("saveGame.txt"))) {
-
             for (int i = 0; i < tagGame.length; i++) {
                 for (int j = 0; j < tagGame.length; j++) {
                     tagGame[i][j] = scan.nextInt();
-            //        System.out.print(tagGame[i][j] + " ");
+                    //System.out.print(tagGame[i][j] + " ");
+                    if (tagGame[i][j] == 0) {
+                        tags0i = i;
+                        tags0j = j;
+                    }
                 }
-            //    System.out.println();
+                // System.out.println();
             }
-            String str = scan.nextLine();
-            System.out.println(str);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        // win();
     }
 
     @Override
@@ -256,5 +265,10 @@ public class TagGame {
             massive.append("\n");
         }
         return massive.toString();
+    }
+
+    public void quit() {
+        System.out.println("Игра завершена! ");
+        System.exit(0);
     }
 }

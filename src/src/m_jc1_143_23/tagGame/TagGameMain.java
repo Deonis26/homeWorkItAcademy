@@ -24,13 +24,15 @@ public class TagGameMain {
                 break;
             case "s":
                 tag.saveGame();
+                tag.win();
                 break;
             case "l":
                 tag.loadGame();
                 System.out.println(tag);
                 tag.win();
                 break;
-            case "q": //quit
+            case "q":
+                tag.quit();
                 break;
         }
 
