@@ -65,10 +65,13 @@ public class TagGame {
                             case "q":
                                 quit();
                                 break;
+                            default:
+                                System.out.println("Не удалось распознать цифру. Повторите ввод ");
+                                //scanner.next();
                         }
                     }
                 } catch (Exception e) {
-                    scanner.next();
+                    //scanner.next();
                     System.out.println("Не удалось распознать цифру. Повторите ввод");
                 }
             }
