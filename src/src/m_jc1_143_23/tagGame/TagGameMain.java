@@ -8,10 +8,8 @@ import java.util.Scanner;
 
 public class TagGameMain {
     public static void main(String[] args) {
-        System.out.println("new game (n)");
-        System.out.println("save game (s)");
-        System.out.println("load game (l)");
-        System.out.println("quit game (q)");
+        Menu menu = new Menu();
+        //System.out.println(menu);
         Scanner scanner = new Scanner(System.in);
         String menuSelection = scanner.next();
         System.out.println();
